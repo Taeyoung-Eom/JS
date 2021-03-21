@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="color.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <h1><a href="#!welcome">WEB</a></h1>
+        <input type="button" value="night" onclick="
+        nightDayHandler(this);
+        ">
+        <div id="grid">
+        <ol id="nav">
+
+        </ol>
+        <article>
+
+        </article>
+        <script>
+            function fetchPage(name){
+            fetch(name).then(function(response){
+                response.text().then(function(text){
+                    document.querySelector('article').innerHTML = text;
+                })
+            });
+        }
+        if(location.hash){
+            fetchPage(location.hash.substring(2));
+        } else {
+            fetchPage('welcome');
+        }
+        fetch('list').then(function(response){
+            response.text().then(function(text){
+                var items = text.split(',');
+                var i = 0
+                var tags = '';
+                while(i<items.length){
+                    var item = items[i];
+                    item = item.trim();
+                    var tag = '<li><a href="#!'+item+'" onclick="fetchPage(\''+item+'\')">'+item+'</a></li>';
+                    tags = tags + tag;
+                    i = i + 1;
+                }
+                document.querySelector('#nav').innerHTML = tags;
+            })
+        })
+        </script>
+    </div>
+</body>
+</html>

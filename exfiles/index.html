@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+        <div class="container">
+            <div>이름 : <input type="text" id="name">
+            </div>
+
+            <div>지역 : 
+                <Select id="city" onchange="changeCity();">
+                    <option value="02" selected>서울</option>
+                    <option value="064">제주</option>
+                </Select>
+            </div>
+
+            <div>동네:
+                <select id="region_02">
+                    <option value="">강남</option>
+                    <option value="">서초</option>
+                </select>
+
+                <select id="region_064" style="display: none;">
+                    <option value="">제주시</option>
+                    <option value="">서귀포시</option>
+                </select>
+            </div>
+
+            <div>테스트 : <input type="text" id="test">
+            </div>
+        <button type="button" onclick="regist();">등록</button>
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        function regist() {
+            // alert(document.getElementById("name").value);
+            // alert(document.getElementById("city").value);
+
+            alert($("#name").val());
+            alert($("#city").val());
+
+            let obj = {
+                name:"",
+                city:""
+            };
+
+            obj.name = $("#name").val();
+            obj.city = $("#city").val();
+
+            printConsole(obj);
+        }
+
+        function printConsole(data) {
+            console.log(data);
+        }
+
+        function printConsole(name, city) {
+            console.log(name);
+        }
+
+        function changeCity() {
+            // let city = document.getElementById("city").value;
+            // document.getElementById("region_02").style.display = "none";
+            // document.getElementById("region_064").style.display = "none";
+
+            // document.getElementById("region_" + city).style.display = "";
+
+            let city = $('#city').val();
+            $('#region_02').hide();
+            $('#region_064').hide();
+            $('#region_' + city).show();
+        }
+
+        // //var, let, const
+        // var x = 1;
+        // x = x + 2;
+        
+        // let y = 1;
+        // y = y + 2;
+
+        // let y = 2;
+
+
+        // document.getElementById("test"),value = y;
+        // alert(x);
+    </script>
+</body>
+</html>
